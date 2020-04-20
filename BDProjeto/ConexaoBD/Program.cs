@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ConexaoBD
+namespace UI.Background
 {
     class Program
     {

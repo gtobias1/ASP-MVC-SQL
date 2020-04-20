@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConexaoBD", "ConexaoBD\ConexaoBD.csproj", "{52A354E0-F494-48BD-BCE9-DC36C6A72B95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Background", "ConexaoBD\UI.Background.csproj", "{52A354E0-F494-48BD-BCE9-DC36C6A72B95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDprojeto.Repositorio", "BDprojeto.Repositorio\BDprojeto.Repositorio.csproj", "{60571BA9-0BA1-4613-BC7C-01E653CD349C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDProjeto.DTO", "BDProjeto.DTO\BDProjeto.DTO.csproj", "{74E8049D-1F16-42D7-8F7A-C3934ED50677}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDProjeto.Aplicacao", "BDProjeto.Aplicacao\BDProjeto.Aplicacao.csproj", "{487A6F3F-FBFD-4F8A-BF67-5AC6A44F956F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{91290FCA-BD3F-44D2-A766-0E7AC85160F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52A354E0-F494-48BD-BCE9-DC36C6A72B95} = {91290FCA-BD3F-44D2-A766-0E7AC85160F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E247008-A8C1-4ED5-B543-B883926D3965}

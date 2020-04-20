@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace ConexaoBD
+namespace UI.Background
 {
     public class ConnectionHelper : IDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConexaoBD
+namespace UI.Background
 {
     public class UsuariosDTO
     {

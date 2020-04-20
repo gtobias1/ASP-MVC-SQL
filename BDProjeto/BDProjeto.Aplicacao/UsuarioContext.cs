@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BDprojeto.Repositorio;
+using BDProjeto.DTO.ExemploBD;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ConexaoBD
+namespace BDProjeto.Aplicacao
 {
-    public class ContextHelper
+    public class UsuarioContext
     {
         private ConnectionHelper conexaoBD;
 
@@ -17,9 +19,9 @@ namespace ConexaoBD
                 else
                     InserirDados(user);
             }
-            catch (Exception ex)
+            catch (Exception exSalvar)
             {
-                throw new Exception("Erro na tentativa de salvar dados na tabela! ", ex);
+                throw new Exception("Erro na tentativa de salvar dados na tabela! ", exSalvar);
             }
         }
 
@@ -33,9 +35,9 @@ namespace ConexaoBD
                 using (conexaoBD = new ConnectionHelper())
                     conexaoBD.ExecutaComando(strQuery);
             }
-            catch (Exception ex)
+            catch (Exception exExcluirDados)
             {
-                throw new Exception("Erro ao excluir usuario! ", ex);
+                throw new Exception("Erro ao excluir usuario! ", exExcluirDados);
             }
         }
 
@@ -46,7 +48,7 @@ namespace ConexaoBD
                 using (conexaoBD = new ConnectionHelper())
                 {
                     var strQuery = "SELECT * FROM usuarios;";
-                    var reader =  conexaoBD.ExecutaSelect(strQuery);
+                    var reader = conexaoBD.ExecutaSelect(strQuery);
                     return ReaderEmLista(reader);
                 }
             }
@@ -68,9 +70,9 @@ namespace ConexaoBD
                     conexaoBD.ExecutaComando(strQuery);
 
             }
-            catch (Exception ex)
+            catch (Exception exInserirDados)
             {
-                throw new Exception("Erro ao inserir novo usuário! ", ex);
+                throw new Exception("Erro ao inserir novo usuário! ", exInserirDados);
             }
         }
 
@@ -87,9 +89,9 @@ namespace ConexaoBD
                     conexaoBD.ExecutaComando(strQuery);
 
             }
-            catch (Exception ex)
+            catch (Exception exAlterarDados)
             {
-                throw new Exception("Erro ao editar usuário! ", ex);
+                throw new Exception("Erro ao editar usuário! ", exAlterarDados);
             }
         }
 

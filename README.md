@@ -1,2 +1,2 @@
 # ASP-MVC-SQL
-Curso para prática da udemy.
+Curso de ASP.NET C# com MVC 5 e SQLServer para prática da udemy, professor Hugo Vasconcelos.

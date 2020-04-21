@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BDProjeto.DTO.ExemploBD
 {
@@ -10,6 +11,6 @@ namespace BDProjeto.DTO.ExemploBD
 
         public string CARGO { get; set; }
 
-        public DateTime DATAINSERCAO { get; set; }
+        public string DATAINSERCAO { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace UI.Background
             {
                 var strQuery = "";
                 strQuery += "INSERT INTO usuarios (NOME, CARGO, DATAINSERCAO) ";
-                strQuery += string.Format("VALUES ('{0}', '{1}', '{2}');", user.NOME, user.CARGO, user.DATAINSERCAO.ToString());
+                strQuery += string.Format("VALUES ('{0}', '{1}', '{2}');", user.NOME, user.CARGO, user.DATAINSERCAO);
 
                 using (conexaoBD = new ConnectionHelper())
                     conexaoBD.ExecutaComando(strQuery);
@@ -101,13 +101,16 @@ namespace UI.Background
 
                 while (reader.Read())
                 {
+                    var auxData = new DateTime();
+                    auxData = DateTime.Parse(reader["DATAINSERCAO"].ToString());
                     var itemUser = new UsuariosDTO()
                     {
                         USUARIO_ID = int.Parse(reader["USUARIO_ID"].ToString()),
                         NOME = reader["NOME"].ToString(),
                         CARGO = reader["CARGO"].ToString(),
-                        DATAINSERCAO = DateTime.Parse(reader["DATAINSERCAO"].ToString())
+                        DATAINSERCAO = auxData.ToString("dd/MM/yyyy")
                     };
+
                     resultMethod.Add(itemUser);
                 }
 

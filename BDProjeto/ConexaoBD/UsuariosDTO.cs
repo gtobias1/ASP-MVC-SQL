@@ -10,6 +10,6 @@ namespace UI.Background
 
         public string CARGO { get; set; }
 
-        public DateTime DATAINSERCAO { get; set; }
+        public string DATAINSERCAO { get; set; }
     }
 }

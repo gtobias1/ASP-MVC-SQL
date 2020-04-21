@@ -24,7 +24,7 @@ namespace UI.Background
             {
                 NOME = nomeA,
                 CARGO = cargoA,
-                DATAINSERCAO = dataInsercaoA
+                DATAINSERCAO = dataInsercaoA.ToString()
             };
 
             //user.USUARIO_ID = 6;

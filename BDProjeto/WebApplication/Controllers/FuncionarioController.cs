@@ -6,11 +6,19 @@ namespace WebApplication.Controllers
 {
     public class FuncionarioController : Controller
     {
+        private UsuarioContextBS business;
+        
+        public FuncionarioController()
+        {
+            business = UsuarioContextConstrutor.UsuarioApEF();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            var bs = new UsuarioContext();
-            var listUsuarios = bs.ListarTodos();
+            //Linhas comentadas usam as chamdas do ADO para trabalhar com o banco de dados
+            //var business = UsuarioContextConstrutor.UsuarioApADO();
+            var listUsuarios = business.ListarTodos();
 
             return View(listUsuarios);
         }
@@ -22,12 +30,13 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(UsuariosDTO user)
+        public ActionResult Cadastrar(Usuarios user)
         {
             if (ModelState.IsValid)
             {
-                var contexto = new UsuarioContext();
-                contexto.Salvar(user);
+                //var contexto = UsuarioContextConstrutor.UsuarioApADO();
+                //contexto.Salvar(user);
+                business.Salvar(user);
                 return RedirectToAction("Index");
             }
             else
@@ -37,8 +46,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            var contexto = new UsuarioContext();
-            var user = contexto.GetUsuarioById(id);
+            //var business = UsuarioContextConstrutor.UsuarioApADO();
+            var user = business.GetUsuarioById(id.ToString());
 
             if (user == null)
                 return HttpNotFound();
@@ -47,12 +56,12 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Editar(UsuariosDTO user)
+        public ActionResult Editar(Usuarios user)
         {
             if (ModelState.IsValid)
             {
-                var contexto = new UsuarioContext();
-                contexto.Salvar(user);
+                //var business = UsuarioContextConstrutor.UsuarioApADO();
+                business.Salvar(user);
                 return RedirectToAction("Index");
             }
             else
@@ -62,8 +71,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult Detalhes(int id)
         {
-            var contexto = new UsuarioContext();
-            var user = contexto.GetUsuarioById(id);
+            //var business = UsuarioContextConstrutor.UsuarioApADO();
+            var user = business.GetUsuarioById(id.ToString());
 
             if (user == null)
                 return HttpNotFound();
@@ -74,8 +83,8 @@ namespace WebApplication.Controllers
         [HttpGet]
         public ActionResult Excluir(int id)
         {
-            var contexto = new UsuarioContext();
-            var user = contexto.GetUsuarioById(id);
+            //var business = UsuarioContextConstrutor.UsuarioApADO();
+            var user = business.GetUsuarioById(id.ToString());
 
             if (user == null)
                 return HttpNotFound();
@@ -86,8 +95,9 @@ namespace WebApplication.Controllers
         [HttpPost, ActionName("Excluir")]
         public ActionResult ExcluirConfirmado(int id)
         {
-            var contexto = new UsuarioContext();
-            contexto.ExcluirDados(id);
+            //var business = UsuarioContextConstrutor.UsuarioApADO();
+            var user = business.GetUsuarioById(id.ToString());
+            business.ExcluirDados(user);
             return RedirectToAction("Index");
         }
 

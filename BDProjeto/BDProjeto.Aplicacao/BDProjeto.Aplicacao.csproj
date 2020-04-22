@@ -42,12 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioContext.cs" />
+    <Compile Include="UsuarioContextBS.cs" />
+    <Compile Include="UsuarioContextConstrutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BDProjeto.DTO\BDProjeto.DTO.csproj">
       <Project>{74E8049D-1F16-42D7-8F7A-C3934ED50677}</Project>
       <Name>BDProjeto.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BDProjeto.RepositorioEF\BDProjeto.RepositorioEF.csproj">
+      <Project>{95a5d6e9-ca90-439c-bb67-6ef2b940a935}</Project>
+      <Name>BDProjeto.RepositorioEF</Name>
     </ProjectReference>
     <ProjectReference Include="..\BDprojeto.Repositorio\BDprojeto.Repositorio.csproj">
       <Project>{60571ba9-0ba1-4613-bc7c-01e653cd349c}</Project>

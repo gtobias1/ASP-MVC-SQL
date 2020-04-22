@@ -1,17 +1,18 @@
 ﻿using BDprojeto.Repositorio;
+using BDProjeto.DTO.Contrato;
 using BDProjeto.DTO.ExemploBD;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace BDProjeto.Aplicacao
+namespace BDProjeto.Repositorio
 {
-    public class UsuarioContext
+    public class UsuarioContextADO : IRepositorio<Usuarios>
     {
         private ConnectionHelper conexaoBD;
 
-        public void Salvar(UsuariosDTO user)
+        public void Salvar(Usuarios user)
         {
             try
             {
@@ -26,12 +27,12 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        public void ExcluirDados(int id)
+        public void Excluir(Usuarios user)
         {
             try
             {
                 var strQuery = "";
-                strQuery += string.Format("DELETE FROM usuarios WHERE USUARIO_ID = {0}", id);
+                strQuery += string.Format("DELETE FROM usuarios WHERE USUARIO_ID = {0}", user.USUARIO_ID);
 
                 using (conexaoBD = new ConnectionHelper())
                     conexaoBD.ExecutaComando(strQuery);
@@ -42,7 +43,7 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        public List<UsuariosDTO> ListarTodos()
+        public IEnumerable<Usuarios> GetAll()
         {
             try
             {
@@ -59,7 +60,7 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        public UsuariosDTO GetUsuarioById(int id)
+        public Usuarios GetByID(string id)
         {
             try
             {
@@ -76,14 +77,13 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        private void InserirDados(UsuariosDTO user)
+        private void InserirDados(Usuarios user)
         {
             try
             {
-                user.DATAINSERCAO = DateTime.Now.ToString();
                 var strQuery = "";
                 strQuery += "INSERT INTO usuarios (NOME, CARGO, DATAINSERCAO) ";
-                strQuery += string.Format("VALUES ('{0}', '{1}', '{2}');", user.NOME, user.CARGO, user.DATAINSERCAO.ToString());
+                strQuery += string.Format("VALUES ('{0}', '{1}', '{2}');", user.NOME, user.CARGO, DateTime.Now.ToString());
 
                 using (conexaoBD = new ConnectionHelper())
                     conexaoBD.ExecutaComando(strQuery);
@@ -95,7 +95,7 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        private void AlterarDados(UsuariosDTO user)
+        private void AlterarDados(Usuarios user)
         {
             try
             {
@@ -114,21 +114,20 @@ namespace BDProjeto.Aplicacao
             }
         }
 
-        private List<UsuariosDTO> ReaderEmLista(SqlDataReader reader)
+        private List<Usuarios> ReaderEmLista(SqlDataReader reader)
         {
             try
             {
-                var resultMethod = new List<UsuariosDTO>();
+                var resultMethod = new List<Usuarios>();
 
                 while (reader.Read())
                 {
-                    var auxData = DateTime.Parse(reader["DATAINSERCAO"].ToString());
-                    var itemUser = new UsuariosDTO()
+                    var itemUser = new Usuarios()
                     {
                         USUARIO_ID = int.Parse(reader["USUARIO_ID"].ToString()),
                         NOME = reader["NOME"].ToString(),
                         CARGO = reader["CARGO"].ToString(),
-                        DATAINSERCAO = auxData.ToString("dd/MM/yyyy")
+                        DATAINSERCAO = DateTime.Parse(reader["DATAINSERCAO"].ToString())
                     };
                     resultMethod.Add(itemUser);
                 }

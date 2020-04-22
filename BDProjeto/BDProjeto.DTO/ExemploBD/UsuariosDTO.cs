@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace BDProjeto.DTO.ExemploBD
+﻿namespace BDProjeto.DTO.ExemploBD
 {
     public class UsuariosDTO
     {

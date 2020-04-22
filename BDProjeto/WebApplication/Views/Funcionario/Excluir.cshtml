@@ -1,0 +1,48 @@
+﻿@model BDProjeto.DTO.ExemploBD.UsuariosDTO
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você deseja realmente excluir este registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.USUARIO_ID)
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATAINSERCAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATAINSERCAO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>

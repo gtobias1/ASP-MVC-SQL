@@ -32,6 +32,7 @@
             <!-- <td>
                         @Html.DisplayFor(modelItem => item.USUARIO_ID)
              </td> -->
+            
             <td>
                 @Html.DisplayFor(modelItem => item.NOME)
             </td>
@@ -42,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.DATAINSERCAO)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Excluir", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "Editar", new { id = item.USUARIO_ID }) |
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.USUARIO_ID }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.USUARIO_ID })
             </td>
         </tr>
     }

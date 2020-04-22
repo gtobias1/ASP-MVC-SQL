@@ -1,0 +1,41 @@
+﻿@model BDProjeto.DTO.ExemploBD.UsuariosDTO
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+
+        <dt>
+            Cargo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGO)
+        </dd>
+
+        <dt>
+            Data de admissão
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATAINSERCAO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new {  id = Model.USUARIO_ID}) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

@@ -3,6 +3,7 @@ using BDProjeto.DTO.ExemploBD;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace BDProjeto.Aplicacao
 {
@@ -55,6 +56,23 @@ namespace BDProjeto.Aplicacao
             catch (Exception exListarTodos)
             {
                 throw new Exception("Erro ao recuperar os registros da tabela! ", exListarTodos);
+            }
+        }
+
+        public UsuariosDTO GetUsuarioById(int id)
+        {
+            try
+            {
+                using (conexaoBD = new ConnectionHelper())
+                {
+                    var strQuery = string.Format("SELECT * FROM usuarios WHERE USUARIO_ID = {0};", id);
+                    var reader = conexaoBD.ExecutaSelect(strQuery);
+                    return ReaderEmLista(reader).FirstOrDefault();
+                }
+            }
+            catch (Exception exGetUsuarioById)
+            {
+                throw new Exception("Erro ao recuperar usuário! ", exGetUsuarioById);
             }
         }
 
